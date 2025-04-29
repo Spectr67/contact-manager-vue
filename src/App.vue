@@ -37,10 +37,24 @@ export default {
         )
       }
     },
+
     handleDeleteContact(contactToDelete) {
       this.contacts = this.contacts.filter(
         contact => contact.id !== contactToDelete.id
       )
+      this.favorites = this.favorites.filter(
+        contact => contact.id !== contactToDelete.id
+      )
+      this.selectedContact = null
+    },
+
+    handleFavoriteToggle(contact) {
+      const isFavorite = this.favorites.some(fav => fav.id === contact.id)
+      if (isFavorite) {
+        this.favorites = this.favorites.filter(fav => fav.id !== contact.id)
+      } else {
+        this.favorites.push(contact)
+      }
     },
   },
 }
@@ -74,6 +88,7 @@ export default {
     v-if="selectedContact"
     :contact="selectedContact"
     @handle-delete="handleDeleteContact"
+    @handle-favorite="handleFavoriteToggle"
   />
 
   <!-- ошибка reading m_modal -->

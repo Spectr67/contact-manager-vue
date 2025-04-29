@@ -1,10 +1,13 @@
 <script>
 export default {
   props: ['contact'],
-  emits: ['handle-delete'],
+  emits: ['handle-delete', 'handle-favorite'],
   methods: {
     handleDelete() {
       this.$emit('handle-delete', this.contact)
+    },
+    handleFavorite() {
+      this.$emit('handle-favorite', this.contact)
     },
   },
 }
@@ -20,10 +23,13 @@ export default {
               <i class="material-symbols-outlined person">person</i>
             </div>
             <div class="col s6 right-align teal-text text-lighten-5">
-              <span class="modal-close material-symbols-outlined non-fill"
-                >star</span
+              <span
+                class="modal-close material-symbols-outlined"
+                :class="{ 'non-fill': !contact.isFavorite }"
+                @click="handleFavorite"
               >
-              <span class="modal-close material-symbols-outlined">star</span>
+                star
+              </span>
               <span class="modal-close material-symbols-outlined">edit</span>
               <span
                 class="modal-close material-symbols-outlined"
