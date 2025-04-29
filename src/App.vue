@@ -7,7 +7,7 @@ import RecentCallsList from './components/RecentCalls/RecentCallsList.vue'
 import FavoritesList from './components/Favorites/FavoritesList.vue'
 import SearcherResult from './components/Search/SearcherResult.vue'
 import ContactPreview from './components/ContactPreview.vue'
-import UINavagation from './components/ui/UINavagation.vue'
+import UINavagation from './ui/UINavagation.vue'
 
 export default {
   components: {
