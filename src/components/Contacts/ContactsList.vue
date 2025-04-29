@@ -7,13 +7,18 @@ export default {
     ContactItem,
     AddContactButton,
   },
+  props: ['modelValue'],
 }
 </script>
 
 <template>
   <div id="tab-3" class="col s12">
     <ul id="app-contacts" class="collection">
-      <ContactItem />
+      <ContactItem
+        v-for="contact of modelValue"
+        :key="contact.id"
+        :contact="contact"
+      />
     </ul>
     <AddContactButton />
   </div>

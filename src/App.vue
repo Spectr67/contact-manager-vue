@@ -42,7 +42,7 @@ export default {
     </nav>
 
     <div>
-      <ContactsList />
+      <ContactsList v-model="contacts" />
 
       <FavoritesList />
 

@@ -1,3 +1,9 @@
+<script>
+export default {
+  props: ['contact'],
+}
+</script>
+
 <template>
   <li
     href="#modal2"
@@ -12,10 +18,12 @@
           >
         </div>
         <div class="col s4">
-          <span class=""><b>Петр Иванов</b></span>
+          <span class="">
+            <b>{{ contact.firstName }} {{ contact.secondName }}</b>
+          </span>
         </div>
         <div class="col s4">
-          <span class="badge new">phone</span>
+          <span class="badge new">{{ contact.phoneNumber }}</span>
         </div>
       </div>
     </div>
