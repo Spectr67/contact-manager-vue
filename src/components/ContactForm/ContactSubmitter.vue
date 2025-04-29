@@ -1,5 +1,27 @@
 <script>
-export default {}
+let idCounter = 0
+const initContact = () => ({
+  firstName: '',
+  secondName: '',
+  phoneNumber: '',
+  id: ++idCounter,
+})
+
+export default {
+  data() {
+    return {
+      contact: initContact(),
+    }
+  },
+  emits: ['contact-submitted'],
+
+  methods: {
+    handleClick() {
+      this.$emit('contact-submitted', { ...this.contact })
+      this.contact = initContact()
+    },
+  },
+}
 </script>
 
 <template>
@@ -11,62 +33,49 @@ export default {}
           <div class="row">
             <div class="input-field col s12">
               <input
+                v-model="contact.firstName"
                 id="firstName"
                 name="firstName"
                 type="text"
                 autocomplete="new-password"
+                required
               />
               <label for="firstName">Имя</label>
             </div>
           </div>
+
           <div class="row">
             <div class="input-field col s12">
               <input
+                v-model="contact.secondName"
                 id="secondName"
                 name="secondName"
                 type="text"
                 autocomplete="new-password"
+                required
               />
               <label for="secondName">Фамилия</label>
             </div>
           </div>
+
           <div class="row">
             <div class="input-field col s12">
               <input
+                v-model="contact.phoneNumber"
                 id="phone"
                 name="phone"
                 type="tel"
                 autocomplete="new-password"
+                required
               />
               <label for="phone">Телефон</label>
             </div>
           </div>
-          <!-- <div class="row">
-              <div class="input-field col s12">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="new-password"
-                />
-                <label for="email">E-mail</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input
-                  id="city"
-                  name="city"
-                  type="text"
-                  autocomplete="new-password"
-                />
-                <label for="city">Город</label>
-              </div>
-            </div> -->
+
           <div class="row">
             <div class="col s12 center-align wrap-form-buttons">
               <div class="input-reset">
-                <input type="reset" id="reset" class="" />
+                <input type="reset" id="reset" />
                 <label
                   for="reset"
                   class="transparent teal-text waves-effect waves-light btn modal-close"
@@ -75,8 +84,10 @@ export default {}
                   Отмена
                 </label>
               </div>
+
               <a
                 id="appAddContact"
+                @click="handleClick"
                 class="btn-ok waves-effect waves-light btn modal-close"
               >
                 <i class="material-icons left">check</i>

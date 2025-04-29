@@ -21,10 +21,18 @@ export default {
     ContactPreview,
     UINavagation,
   },
+  data() {
+    return {
+      contacts: [],
+      recentCalls: [],
+      favorites: [],
+    }
+  },
 }
 </script>
 
 <template>
+  {{ contacts }}
   <div class="wrapper teal lighten-5">
     <nav class="nav-extended teal">
       <Searcher />
@@ -42,7 +50,7 @@ export default {
     </div>
   </div>
 
-  <ContactSubmitter />
+  <ContactSubmitter @contact-submitted="contacts.push($event)" />
 
   <ContactPreview />
 
