@@ -26,6 +26,7 @@ export default {
       contacts: [],
       recentCalls: [],
       favorites: [],
+      selectedContact: null,
     }
   },
 }
@@ -42,7 +43,10 @@ export default {
     </nav>
 
     <div>
-      <ContactsList v-model="contacts" />
+      <ContactsList
+        v-model="contacts"
+        @contact-click="selectedContact = $event"
+      />
 
       <FavoritesList v-model="favorites" />
 
@@ -52,7 +56,7 @@ export default {
 
   <ContactSubmitter @contact-submitted="contacts.push($event)" />
 
-  <ContactPreview />
+  <ContactPreview v-if="selectedContact" :contact="selectedContact" />
 
   <SearcherResult />
 </template>

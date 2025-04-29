@@ -1,3 +1,9 @@
+<script>
+export default {
+  props: ['contact'],
+}
+</script>
+
 <template>
   <div id="modal2" class="modal bottom-sheet">
     <div class="modal-content">
@@ -16,7 +22,9 @@
               <span class="modal-close material-symbols-outlined">delete</span>
             </div>
           </div>
-          <h5 class="center-align white-text">Петр Иванов</h5>
+          <h5 class="center-align white-text">
+            {{ contact.firstName }} {{ contact.secondName }}
+          </h5>
         </div>
         <div class="bottom">
           <div class="container">
@@ -27,9 +35,12 @@
                     class="waves-effect collection-item avatar transparent z-depth-1"
                   >
                     <i class="material-icons circle teal darken-3">person</i>
-                    <span class="title"><b>0991234567</b></span>
+                    <span class="title"
+                      ><b>{{ contact.phoneNumber }}</b></span
+                    >
                     <p>
                       <i>Позавчера</i>
+                      <!-- last time call ??? -->
                     </p>
                     <a href="#!" class="secondary-content">
                       <i class="material-icons">phone</i>

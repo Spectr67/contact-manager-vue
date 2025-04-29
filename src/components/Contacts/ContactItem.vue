@@ -1,11 +1,14 @@
 <script>
 export default {
   props: ['contact'],
+
+  emits: ['contact-click'],
 }
 </script>
 
 <template>
   <li
+    @click="$emit('contact-click', contact)"
     href="#modal2"
     class="contact modal-trigger collection-item transparent waves-effect"
   >
