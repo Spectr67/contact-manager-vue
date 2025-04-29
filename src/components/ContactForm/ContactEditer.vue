@@ -1,12 +1,30 @@
+<script>
+export default {
+  data() {
+    return {
+      updatedContact: {},
+    }
+  },
+  emits: ['contact-updated'],
+  props: ['selectedContact'],
+  methods: {
+    handleUpdate() {
+      this.$emit('contact-updated', { ...this.selectedContact })
+    },
+  },
+}
+</script>
+
 <template>
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
       <div class="wrap-content row">
-        <h5 class="header">Добавить контакт</h5>
+        <h5 class="header">Редактировать Контакт</h5>
         <form class="col s12" autocomplete="off">
           <div class="row">
             <div class="input-field col s12">
               <input
+                v-model="selectedContact.firstName"
                 id="firstName"
                 name="firstName"
                 type="text"
@@ -18,6 +36,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input
+                v-model="selectedContact.secondName"
                 id="secondName"
                 name="secondName"
                 type="text"
@@ -29,6 +48,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input
+                v-model="selectedContact.phoneNumber"
                 id="phone"
                 name="phone"
                 type="tel"
@@ -37,28 +57,6 @@
               <label for="phone">Телефон</label>
             </div>
           </div>
-          <!-- <div class="row">
-              <div class="input-field col s12">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="new-password"
-                />
-                <label for="email">E-mail</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input
-                  id="city"
-                  name="city"
-                  type="text"
-                  autocomplete="new-password"
-                />
-                <label for="city">Город</label>
-              </div>
-            </div> -->
           <div class="row">
             <div class="col s12 center-align wrap-form-buttons">
               <div class="input-reset">
@@ -67,16 +65,17 @@
                   for="reset"
                   class="transparent teal-text waves-effect waves-light btn modal-close"
                 >
-                  <i class="material-icons left">close</i>
+                  <i class="material-icons left">Отмена</i>
                   Отмена
                 </label>
               </div>
               <a
                 id="appAddContact"
+                @click="handleUpdate"
                 class="btn-ok waves-effect waves-light btn modal-close"
               >
                 <i class="material-icons left">check</i>
-                <span>Добавить</span>
+                <span>Сохранить изменения</span>
               </a>
             </div>
           </div>

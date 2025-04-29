@@ -29,6 +29,15 @@ export default {
       selectedContact: null,
     }
   },
+  methods: {
+    handleContactUpdate(updatedContact) {
+      if (updatedContact) {
+        this.contacts = this.contacts.map(contact =>
+          contact.id === updatedContact.id ? updatedContact : contact
+        )
+      }
+    },
+  },
 }
 </script>
 
@@ -57,6 +66,11 @@ export default {
   <ContactSubmitter @contact-submitted="contacts.push($event)" />
 
   <ContactPreview v-if="selectedContact" :contact="selectedContact" />
-
+  <!-- ошибка reading m_modal -->
+  <ContactEditer
+    v-if="selectedContact"
+    :selectedContact="selectedContact"
+    @contact-updated="handleContactUpdate"
+  />
   <SearcherResult />
 </template>
