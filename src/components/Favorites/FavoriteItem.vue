@@ -1,3 +1,9 @@
+<script>
+export default {
+  props: ['contact'],
+}
+</script>
+
 <template>
   <div id="app-favorites" class="row">
     <div class="favorite col s6 m4 l3 xl2">
@@ -8,7 +14,9 @@
             >person</span
           >
         </div>
-        <span class="white-text">Петр Иванов</span>
+        <span class="white-text"
+          >{{ contact.firstName }} {{ contact.secondName }}</span
+        >
       </div>
     </div>
   </div>

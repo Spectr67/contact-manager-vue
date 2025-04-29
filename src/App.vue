@@ -44,9 +44,9 @@ export default {
     <div>
       <ContactsList v-model="contacts" />
 
-      <FavoritesList />
+      <FavoritesList v-model="favorites" />
 
-      <RecentCallsList />
+      <RecentCallsList v-model="recentCalls" />
     </div>
   </div>
 
