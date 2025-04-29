@@ -3,11 +3,11 @@ import ContactItem from './ContactItem.vue'
 import AddContactButton from './AddContactButton.vue'
 
 export default {
-  components: {
-    ContactItem,
-    AddContactButton,
-  },
+  components: { ContactItem, AddContactButton },
+
   props: ['modelValue'],
+
+  emits: ['contact-click'],
 }
 </script>
 
@@ -18,6 +18,7 @@ export default {
         v-for="contact of modelValue"
         :key="contact.id"
         :contact="contact"
+        @contact-click="$emit('contact-click', $event)"
       />
     </ul>
     <AddContactButton />

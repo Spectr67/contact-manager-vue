@@ -2,10 +2,9 @@
 import FavoriteItem from './FavoriteItem.vue'
 
 export default {
-  components: {
-    FavoriteItem,
-  },
-  props: ['modelValue'],
+  components: { FavoriteItem },
+
+  props: ['favorites'],
 }
 </script>
 
@@ -13,9 +12,9 @@ export default {
   <div id="tab-1" class="col s12">
     <div class="container">
       <FavoriteItem
-        v-for="contact of modelValue"
-        :key="contact.id"
-        :contact="contact"
+        v-for="favorite of favorites"
+        :key="favorite.id"
+        :contact="favorite"
       />
     </div>
   </div>

@@ -5,7 +5,7 @@ const initContact = () => ({
   secondName: '',
   phoneNumber: '',
   id: ++idCounter,
-  favorite: false,
+  isFavorite: false,
 })
 
 export default {

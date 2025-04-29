@@ -1,12 +1,15 @@
 <script>
 export default {
+  props: ['selectedContact'],
+
+  emits: ['contact-updated'],
+
   data() {
     return {
       updatedContact: {},
     }
   },
-  emits: ['contact-updated'],
-  props: ['selectedContact'],
+
   methods: {
     handleUpdate() {
       this.$emit('contact-updated', { ...this.selectedContact })
@@ -25,6 +28,8 @@ export default {
             <div class="input-field col s12">
               <input
                 v-model="selectedContact.firstName"
+                :value="selectedContact.firstName"
+                @input="selectedContact.firstName = $event.target.value"
                 id="firstName"
                 name="firstName"
                 type="text"

@@ -21,14 +21,15 @@ export default {
     ContactPreview,
     UINavagation,
   },
+
   data() {
     return {
       contacts: [],
       recentCalls: [],
-      favorites: [],
       selectedContact: null,
     }
   },
+
   methods: {
     handleContactUpdate(updatedContact) {
       if (updatedContact) {
@@ -56,12 +57,16 @@ export default {
         this.favorites.push(contact)
       }
     },
+
+    computed: {
+      favorites() {},
+    },
   },
 }
 </script>
 
 <template>
-  {{ contacts }}
+  {{ selectedContact }}
   <div class="wrapper teal lighten-5">
     <nav class="nav-extended teal">
       <Searcher />
@@ -76,7 +81,7 @@ export default {
         @contact-click="selectedContact = $event"
       />
 
-      <FavoritesList v-model="favorites" />
+      <FavoritesList :favorites="favorites" />
 
       <RecentCallsList v-model="recentCalls" />
     </div>
@@ -85,7 +90,6 @@ export default {
   <ContactSubmitter @contact-submitted="contacts.push($event)" />
 
   <ContactPreview
-    v-if="selectedContact"
     :contact="selectedContact"
     @handle-delete="handleDeleteContact"
     @handle-favorite="handleFavoriteToggle"

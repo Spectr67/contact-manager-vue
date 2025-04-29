@@ -25,7 +25,7 @@ export default {
             <div class="col s6 right-align teal-text text-lighten-5">
               <span
                 class="modal-close material-symbols-outlined"
-                :class="{ 'non-fill': !contact.isFavorite }"
+                :class="{ 'non-fill': !contact?.isFavorite }"
                 @click="handleFavorite"
               >
                 star
@@ -39,7 +39,7 @@ export default {
             </div>
           </div>
           <h5 class="center-align white-text">
-            {{ contact.firstName }} {{ contact.secondName }}
+            {{ contact?.firstName }} {{ contact?.secondName }}
           </h5>
         </div>
         <div class="bottom">
@@ -52,7 +52,7 @@ export default {
                   >
                     <i class="material-icons circle teal darken-3">person</i>
                     <span class="title"
-                      ><b>{{ contact.phoneNumber }}</b></span
+                      ><b>{{ contact?.phoneNumber }}</b></span
                     >
                     <p>
                       <i>Позавчера</i>
