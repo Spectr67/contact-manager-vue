@@ -37,6 +37,11 @@ export default {
         )
       }
     },
+    handleDeleteContact(contactToDelete) {
+      this.contacts = this.contacts.filter(
+        contact => contact.id !== contactToDelete.id
+      )
+    },
   },
 }
 </script>
@@ -65,7 +70,12 @@ export default {
 
   <ContactSubmitter @contact-submitted="contacts.push($event)" />
 
-  <ContactPreview v-if="selectedContact" :contact="selectedContact" />
+  <ContactPreview
+    v-if="selectedContact"
+    :contact="selectedContact"
+    @handle-delete="handleDeleteContact"
+  />
+
   <!-- ошибка reading m_modal -->
   <ContactEditer
     v-if="selectedContact"

@@ -1,6 +1,12 @@
 <script>
 export default {
   props: ['contact'],
+  emits: ['handle-delete'],
+  methods: {
+    handleDelete() {
+      this.$emit('handle-delete', this.contact)
+    },
+  },
 }
 </script>
 
@@ -19,7 +25,11 @@ export default {
               >
               <span class="modal-close material-symbols-outlined">star</span>
               <span class="modal-close material-symbols-outlined">edit</span>
-              <span class="modal-close material-symbols-outlined">delete</span>
+              <span
+                class="modal-close material-symbols-outlined"
+                @click="handleDelete"
+                >delete</span
+              >
             </div>
           </div>
           <h5 class="center-align white-text">
