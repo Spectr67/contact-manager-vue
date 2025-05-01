@@ -27,9 +27,7 @@ export default {
           <div class="row">
             <div class="input-field col s12">
               <input
-                v-model="selectedContact.firstName"
                 :value="selectedContact.firstName"
-                @input="selectedContact.firstName = $event.target.value"
                 id="firstName"
                 name="firstName"
                 type="text"
@@ -41,7 +39,7 @@ export default {
           <div class="row">
             <div class="input-field col s12">
               <input
-                v-model="selectedContact.secondName"
+                :value="selectedContact.secondName"
                 id="secondName"
                 name="secondName"
                 type="text"
@@ -53,7 +51,7 @@ export default {
           <div class="row">
             <div class="input-field col s12">
               <input
-                v-model="selectedContact.phoneNumber"
+                :value="selectedContact.phoneNumber"
                 id="phone"
                 name="phone"
                 type="tel"

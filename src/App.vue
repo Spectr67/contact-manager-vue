@@ -30,6 +30,12 @@ export default {
     }
   },
 
+  computed: {
+    favorites() {
+      return this.contacts.filter(contact => contact.isFavorite)
+    },
+  },
+
   methods: {
     handleContactUpdate(updatedContact) {
       if (updatedContact) {
@@ -43,23 +49,14 @@ export default {
       this.contacts = this.contacts.filter(
         contact => contact.id !== contactToDelete.id
       )
-      this.favorites = this.favorites.filter(
-        contact => contact.id !== contactToDelete.id
-      )
       this.selectedContact = null
     },
 
     handleFavoriteToggle(contact) {
-      const isFavorite = this.favorites.some(fav => fav.id === contact.id)
-      if (isFavorite) {
-        this.favorites = this.favorites.filter(fav => fav.id !== contact.id)
-      } else {
-        this.favorites.push(contact)
+      const target = this.contacts.find(c => c.id === contact.id)
+      if (target) {
+        target.isFavorite = !target.isFavorite
       }
-    },
-
-    computed: {
-      favorites() {},
     },
   },
 }
