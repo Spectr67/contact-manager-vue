@@ -5,7 +5,7 @@ import ContactsList from './components/Contacts/ContactsList.vue'
 import Searcher from './components/Search/Searcher.vue'
 import RecentCallsList from './components/RecentCalls/RecentCallsList.vue'
 import FavoritesList from './components/Favorites/FavoritesList.vue'
-import SearcherResult from './components/Search/SearcherResult.vue'
+import SearcherResult from './components/Search/SearcherList.vue'
 import ContactPreview from './components/ContactPreview.vue'
 import UINavagation from './ui/UINavagation.vue'
 
@@ -27,6 +27,7 @@ export default {
       contacts: [],
       recentCalls: [],
       selectedContact: null,
+      filteredContacts: [],
     }
   },
 
@@ -43,6 +44,10 @@ export default {
           contact.id === updatedContact.id ? updatedContact : contact
         )
       }
+    },
+
+    handleSearchResult(result) {
+      this.filteredContacts = result
     },
 
     handleDeleteContact(contactToDelete) {
@@ -66,7 +71,7 @@ export default {
   {{ selectedContact }}
   <div class="wrapper teal lighten-5">
     <nav class="nav-extended teal">
-      <Searcher />
+      <Searcher :contacts="contacts" @search-result="handleSearchResult" />
 
       <!-- кнопки выбора меню -->
       <UINavagation />
@@ -92,11 +97,10 @@ export default {
     @handle-favorite="handleFavoriteToggle"
   />
 
-  <!-- ошибка reading m_modal -->
   <ContactEditer
     v-if="selectedContact"
     :selectedContact="selectedContact"
     @contact-updated="handleContactUpdate"
   />
-  <SearcherResult />
+  <SearcherResult :findedContacts="filteredContacts" />
 </template>

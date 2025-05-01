@@ -1,8 +1,31 @@
+<script>
+import { queryToArray, findContactsByQueries } from './searchFunctions.js'
+
+export default {
+  props: ['contacts'],
+
+  data() {
+    return {
+      findedContacts: [],
+    }
+  },
+
+  methods: {
+    handleSearch(event) {
+      const query = event.target.value
+      const queries = queryToArray(query)
+      const results = findContactsByQueries(queries, this.contacts)
+      this.$emit('search-result', results)
+    },
+  },
+}
+</script>
 <template>
   <div class="nav-wrapper">
     <form>
       <div class="input-field">
         <input
+          @input="handleSearch"
           class="teal-text text-lighten-5"
           id="search"
           type="search"
