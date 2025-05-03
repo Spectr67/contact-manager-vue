@@ -1,13 +1,16 @@
 <script>
 export default {
   props: ['contact'],
-  emits: ['handle-delete', 'handle-favorite'],
+  emits: ['handle-delete', 'handle-favorite', 'handle-click-recent-call'],
   methods: {
     handleDelete() {
       this.$emit('handle-delete', this.contact)
     },
     handleFavorite() {
       this.$emit('handle-favorite', this.contact)
+    },
+    handleClickRecentCall() {
+      this.$emit('handle-click-recent-call', this.contact)
     },
   },
 }
@@ -43,7 +46,7 @@ export default {
           </h5>
         </div>
         <div class="bottom">
-          <div class="container">
+          <div class="container" @click="handleClickRecentCall">
             <div class="row valign-wrapper">
               <div class="col s12">
                 <ul class="collection">

@@ -10,7 +10,10 @@ export default {
   >
     <i class="material-icons circle teal darken-3">person</i>
     <span class="title"
-      ><b>{{ recentCall.name }} {{ recentCall.phoneNumber }}</b></span
+      ><b
+        >{{ recentCall.firstName }}{{ recentCall.secondName
+        }}{{ recentCall.phoneNumber }}</b
+      ></span
     >
     <p>
       <i>{{ recentCall.date }}</i>

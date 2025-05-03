@@ -63,6 +63,9 @@ export default {
         target.isFavorite = !target.isFavorite
       }
     },
+    handleRecentCall(contact) {
+      this.recentCalls.push(contact)
+    },
   },
 }
 </script>
@@ -85,7 +88,7 @@ export default {
 
       <FavoritesList :favorites="favorites" />
 
-      <RecentCallsList v-model="recentCalls" />
+      <RecentCallsList :recentCalls="recentCalls" />
     </div>
   </div>
 
@@ -95,6 +98,7 @@ export default {
     :contact="selectedContact"
     @handle-delete="handleDeleteContact"
     @handle-favorite="handleFavoriteToggle"
+    @handle-click-recent-call="handleRecentCall"
   />
 
   <ContactEditer
