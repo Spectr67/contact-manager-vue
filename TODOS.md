@@ -4,5 +4,8 @@
 
 <!-- favorites это зависимое состояние. делаешь через компьютеды. -->
 
-
 <a id="elFab" href="#modal1" class="btn-floating btn-large pink accent-4 waves-effect waves-light modal-trigger pulse" draggable="false"><i class="large material-icons">person_add</i></a>
+
+search to lower case
+recentCall
+modal1
