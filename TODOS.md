@@ -9,3 +9,5 @@
 search to lower case
 recentCall
 modal1
+
+editer => editor

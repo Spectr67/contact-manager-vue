@@ -9,6 +9,19 @@ import SearcherResult from './components/Search/SearcherList.vue'
 import ContactPreview from './components/ContactPreview.vue'
 import UINavagation from './ui/UINavagation.vue'
 
+let IdRecentCallCounter = 0
+
+const initRecentCall = (phoneNumber, that) => ({
+  phoneNumber: phoneNumber,
+  get foundContact() {
+    console.log(that)
+    return that.contacts.find(c => c.phoneNumber === phoneNumber)
+  },
+  id: ++IdRecentCallCounter,
+  when: Date.now(),
+  timeAgo: 0,
+})
+
 export default {
   components: {
     ContactEditer,
@@ -38,6 +51,12 @@ export default {
   },
 
   methods: {
+    addRecentCallByPhoneNumber(phoneNumber) {
+      const recentCall = initRecentCall(phoneNumber, this)
+      console.log(recentCall.foundContact)
+      this.recentCalls.push(recentCall)
+    },
+
     handleContactUpdate(updatedContact) {
       if (updatedContact) {
         this.contacts = this.contacts.map(contact =>
@@ -90,7 +109,7 @@ export default {
 
       <RecentCallsList
         :recentCalls="recentCalls"
-        :selectedContact="selectedContact.phoneNumber"
+        @call="addRecentCallByPhoneNumber($event)"
       />
     </div>
   </div>
