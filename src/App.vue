@@ -88,7 +88,10 @@ export default {
 
       <FavoritesList :favorites="favorites" />
 
-      <RecentCallsList :recentCalls="recentCalls" />
+      <RecentCallsList
+        :recentCalls="recentCalls"
+        :selectedContact="selectedContact.phoneNumber"
+      />
     </div>
   </div>
 

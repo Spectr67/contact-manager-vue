@@ -1,28 +1,11 @@
 <script>
 import RecentCallsItem from './RecentCallsItem.vue'
 
-let IdResentCallCounter = 0
-
-const initRecentCall = contact => ({
-  firstName: contact.firstName,
-  secondName: contact.secondName,
-  phoneNumber: contact.phoneNumber,
-  id: ++IdResentCallCounter,
-  timeAgo: 0,
-})
-
 export default {
   components: {
     RecentCallsItem,
   },
-  props: ['selectedContact'],
-  emits: ['resent-call-submitted'],
-  methods: {
-    handleClickRecentCall() {
-      this.$emit('contact-submitted', initRecentCall(this.contact))
-      this.contact = initRecentCall(contact)
-    },
-  },
+  props: ['recentCalls', 'selectedContact'],
 }
 </script>
 
@@ -33,8 +16,9 @@ export default {
         <div class="recent-call col s12">
           <ul id="app-recent-calls" class="collection">
             <RecentCallsItem
-              v-for="recentCall of modelValue"
-              :key="recentCall.id"
+              :selectedPhone="selectedContact"
+              v-for="recentCall of recentCalls"
+              :key="recentCall.phoneNumber"
               :recentCall="recentCall"
             />
           </ul>
