@@ -116,6 +116,10 @@ nav.nav-extended form input:focus {
   max-height: calc(100vh);
   height: calc(100vh);
 }
+#modal0.bottom-sheet {
+  max-height: calc(100vh);
+  height: calc(100vh);
+}
 
 #modal2.bottom-sheet {
   max-height: calc(60vh);
@@ -133,6 +137,15 @@ nav.nav-extended form input:focus {
   display: none;
 }
 #modal1 .wrap-form-buttons > * {
+  margin: 15px;
+}
+#modal0 .input-reset {
+  display: inline-block;
+}
+#modal0 .input-reset [type='reset'] {
+  display: none;
+}
+#modal0 .wrap-form-buttons > * {
   margin: 15px;
 }
 

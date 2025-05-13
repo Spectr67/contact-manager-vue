@@ -69,6 +69,7 @@ export default {
     },
 
     handleDeleteContact(contactToDelete) {
+      contactToDelete.firsName = 'Petya'
       this.contacts = this.contacts.filter(
         contact => contact.id !== contactToDelete.id
       )
@@ -126,7 +127,6 @@ export default {
   />
 
   <ContactEditer
-    v-if="selectedContact"
     :selectedContact="selectedContact"
     @contact-updated="handleContactUpdate"
   />

@@ -1,16 +1,15 @@
 <script>
 export default {
   props: ['contact'],
+
   emits: ['handle-delete', 'handle-favorite', 'call'],
+
   methods: {
     handleDelete() {
       this.$emit('handle-delete', this.contact)
     },
     handleFavorite() {
       this.$emit('handle-favorite', this.contact)
-    },
-    handleClickRecentCall() {
-      this.$emit('handle-click-recent-call', this.contact)
     },
   },
 }
@@ -29,18 +28,18 @@ export default {
               <span
                 class="modal-close material-symbols-outlined"
                 :class="{ 'non-fill': !contact?.isFavorite }"
-                @click="handleFavorite"
+                @click="contact.isFavorite = !contact.isFavorite"
               >
                 star
               </span>
               <span
-                href="#modal10"
+                href="#modal0"
                 class="modal-close modal-trigger material-symbols-outlined"
                 >edit</span
               >
               <span
                 class="modal-close material-symbols-outlined"
-                @click="handleDelete"
+                @click="$emit('handle-delete', { ...contact })"
                 >delete</span
               >
             </div>

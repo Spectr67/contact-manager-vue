@@ -1,6 +1,6 @@
 <script>
 import ContactItem from './ContactItem.vue'
-import AddContactButton from './AddContactButton.vue'
+import AddContactButton from '../../ui/AddContactButton.vue'
 
 export default {
   components: { ContactItem, AddContactButton },

@@ -1,4 +1,3 @@
-export { queryToArray, findContactsByQueries }
 function findContactsByQuery(query) {
   return findContactsByQueries(queryToArray(query), contacts)
 }
@@ -33,3 +32,5 @@ function compareWords(a, b) {
 }
 
 const removeClones = arr => Array.from(new Set(arr))
+
+export { queryToArray, findContactsByQueries }

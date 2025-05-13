@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div id="modal10" class="modal bottom-sheet">
+  <div id="modal0" class="modal bottom-sheet">
     <div class="modal-content">
       <div class="wrap-content row">
         <h5 class="header">Редактировать Контакт</h5>
@@ -27,7 +27,7 @@ export default {
           <div class="row">
             <div class="input-field col s12">
               <input
-                :value="selectedContact.firstName"
+                :value="selectedContact?.firstName"
                 id="firstName"
                 name="firstName"
                 type="text"
@@ -39,7 +39,7 @@ export default {
           <div class="row">
             <div class="input-field col s12">
               <input
-                :value="selectedContact.secondName"
+                :value="selectedContact?.secondName"
                 id="secondName"
                 name="secondName"
                 type="text"
@@ -51,7 +51,7 @@ export default {
           <div class="row">
             <div class="input-field col s12">
               <input
-                :value="selectedContact.phoneNumber"
+                :value="selectedContact?.phoneNumber"
                 id="phone"
                 name="phone"
                 type="tel"

@@ -1,5 +1,8 @@
 <script>
-import { queryToArray, findContactsByQueries } from './searchFunctions.js'
+import {
+  queryToArray,
+  findContactsByQueries,
+} from '../../functions/searchFunctions.js'
 
 export default {
   props: ['contacts'],
