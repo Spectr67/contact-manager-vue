@@ -33,7 +33,11 @@ export default {
               >
                 star
               </span>
-              <span class="modal-close material-symbols-outlined">edit</span>
+              <span
+                href="#modal10"
+                class="modal-close modal-trigger material-symbols-outlined"
+                >edit</span
+              >
               <span
                 class="modal-close material-symbols-outlined"
                 @click="handleDelete"

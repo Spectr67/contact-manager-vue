@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div id="modal1" class="modal bottom-sheet">
+  <div id="modal10" class="modal bottom-sheet">
     <div class="modal-content">
       <div class="wrap-content row">
         <h5 class="header">Редактировать Контакт</h5>

@@ -82,7 +82,7 @@ export default {
       }
     },
     handleRecentCall(contact) {
-      this.recentCalls.push(contact)
+      this.recentCalls.unshift(contact)
     },
   },
 }
