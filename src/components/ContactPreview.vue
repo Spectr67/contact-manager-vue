@@ -1,7 +1,7 @@
 <script>
 export default {
   props: ['contact'],
-  emits: ['handle-delete', 'handle-favorite', 'handle-click-recent-call'],
+  emits: ['handle-delete', 'handle-favorite', 'call'],
   methods: {
     handleDelete() {
       this.$emit('handle-delete', this.contact)
@@ -46,7 +46,7 @@ export default {
           </h5>
         </div>
         <div class="bottom">
-          <div class="container" @click="handleClickRecentCall">
+          <div class="container" @click="$emit('call', contact.phoneNumber)">
             <div class="row valign-wrapper">
               <div class="col s12">
                 <ul class="collection">

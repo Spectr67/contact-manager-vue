@@ -18,6 +18,7 @@ export default {
             v-for="contact of findedContacts"
             :key="contact.id"
             :contact="contact"
+            @call="$emit('call', $event)"
           />
         </ul>
       </div>

@@ -17,7 +17,7 @@ export default {
         <div class="recent-call col s12">
           <ul id="app-recent-calls" class="collection">
             <RecentCallsItem
-              v-for="recentCall of recentCalls"
+              v-for="recentCall in recentCalls.slice().reverse()"
               :key="recentCall.id"
               :recent-call="recentCall"
               @click="$emit('call', recentCall.phoneNumber)"

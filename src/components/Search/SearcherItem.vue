@@ -1,6 +1,7 @@
 <script>
 export default {
   props: ['contact'],
+  emits: ['call'],
 }
 </script>
 
@@ -9,7 +10,11 @@ export default {
     <i class="material-icons circle green">assessment</i>
     <span class="title">{{ contact.firstName }}{{ contact.secondName }}</span>
     <p>{{ contact.phoneNumber }}</p>
-    <a href="#!" class="secondary-content">
+    <a
+      href="#!"
+      class="secondary-content"
+      @click="$emit('call', contact.phoneNumber)"
+    >
       <i class="material-icons">phone</i>
     </a>
   </li>

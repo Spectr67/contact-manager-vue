@@ -14,7 +14,6 @@ let IdRecentCallCounter = 0
 const initRecentCall = (phoneNumber, that) => ({
   phoneNumber: phoneNumber,
   get foundContact() {
-    console.log(that)
     return that.contacts.find(c => c.phoneNumber === phoneNumber)
   },
   id: ++IdRecentCallCounter,
@@ -105,7 +104,10 @@ export default {
         @contact-click="selectedContact = $event"
       />
 
-      <FavoritesList :favorites="favorites" />
+      <FavoritesList
+        :favorites="favorites"
+        @call="addRecentCallByPhoneNumber($event)"
+      />
 
       <RecentCallsList
         :recentCalls="recentCalls"
@@ -120,7 +122,7 @@ export default {
     :contact="selectedContact"
     @handle-delete="handleDeleteContact"
     @handle-favorite="handleFavoriteToggle"
-    @handle-click-recent-call="handleRecentCall"
+    @call="addRecentCallByPhoneNumber($event)"
   />
 
   <ContactEditer
@@ -128,5 +130,8 @@ export default {
     :selectedContact="selectedContact"
     @contact-updated="handleContactUpdate"
   />
-  <SearcherResult :findedContacts="filteredContacts" />
+  <SearcherResult
+    :findedContacts="filteredContacts"
+    @call="addRecentCallByPhoneNumber($event)"
+  />
 </template>

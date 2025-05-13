@@ -5,6 +5,7 @@ export default {
   components: { FavoriteItem },
 
   props: ['favorites'],
+  emits: ['call'],
 }
 </script>
 
@@ -15,6 +16,7 @@ export default {
         v-for="favorite of favorites"
         :key="favorite.id"
         :contact="favorite"
+        @click="$emit('call', favorite.phoneNumber)"
       />
     </div>
   </div>
